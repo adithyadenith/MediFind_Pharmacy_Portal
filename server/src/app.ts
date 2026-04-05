@@ -14,6 +14,12 @@ if (!process.env.SESSION_SECRET) {
 
 const app: Express = express();
 const clientDistPath = path.resolve(process.cwd(), "..", "client", "dist");
+const isProduction = process.env.NODE_ENV === "production";
+
+if (isProduction) {
+  // Railway is behind a reverse proxy; secure cookies need this trust.
+  app.set("trust proxy", 1);
+}
 
 app.use(
   pinoHttp({
@@ -47,9 +53,11 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  proxy: isProduction,
   cookie: {
-    secure: false,
+    secure: isProduction,
     httpOnly: true,
+    sameSite: isProduction ? "none" : "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   },
 }));
