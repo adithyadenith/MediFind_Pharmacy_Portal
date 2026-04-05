@@ -10,6 +10,7 @@ import {
   useListOrders,
   useAcceptOrder,
   useRejectOrder,
+  resolveApiUrl,
   getListOrdersQueryKey,
   getGetDashboardStatsQueryKey,
   getGetRecentOrdersQueryKey,
@@ -45,7 +46,7 @@ interface Order {
 const POLL_MS = 4000;
 
 async function postOrderTransition(id: number, action: "ready" | "complete" | "cancel") {
-  const response = await fetch(`/api/orders/${id}/${action}`, {
+  const response = await fetch(resolveApiUrl(`/api/orders/${id}/${action}`), {
     method: "POST",
     credentials: "include",
   });

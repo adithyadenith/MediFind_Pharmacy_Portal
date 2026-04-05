@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Activity, Building2, KeyRound, Lock, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
+import { resolveApiUrl } from "@/lib/api-client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -69,7 +70,7 @@ function normalizeOtpInput(value: string) {
 }
 
 async function apiRequest<T>(url: string, body: unknown): Promise<T> {
-  const response = await fetch(url, {
+  const response = await fetch(resolveApiUrl(url), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
