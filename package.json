@@ -1,0 +1,17 @@
+{
+  "name": "workspace",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm --parallel --filter ./server --filter ./client run dev",
+    "dev:server": "pnpm --filter ./server run dev",
+    "dev:client": "pnpm --filter ./client run dev",
+    "build": "pnpm --filter ./server run build && pnpm --filter ./client run build",
+    "typecheck": "pnpm --filter ./server run typecheck && pnpm --filter ./client run typecheck"
+  },
+  "private": true,
+  "devDependencies": {
+    "typescript": "~5.9.2",
+    "prettier": "^3.8.1"
+  }
+}
