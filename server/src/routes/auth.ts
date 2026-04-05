@@ -327,7 +327,21 @@ router.get("/me", async (req, res) => {
   if (!session?.userId) {
     return res.status(401).json({ error: "Not authenticated" });
   }
-  return res.json({ id: session.userId, email: session.email });
+
+  const existing = await db.select().from(usersTable).where(eq(usersTable.id, session.userId)).limit(1);
+  const user = existing[0];
+
+  if (!user) {
+    return res.status(401).json({ error: "Not authenticated" });
+  }
+
+  return res.json({
+    id: user.id,
+    email: user.email,
+    pharmacyName: user.pharmacyName,
+    address: user.address,
+    contactNumber: user.contactNumber,
+  });
 });
 
 router.post("/logout", async (req, res) => {

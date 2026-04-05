@@ -29,6 +29,9 @@ export interface VerifyOtpBody {
 export interface AuthUser {
   id: number;
   email: string;
+  pharmacyName?: string | null;
+  address?: string | null;
+  contactNumber?: string | null;
 }
 
 export type MedicineStatus =

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -5,8 +6,30 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Save, Bell, Shield, Store } from "lucide-react";
 import { toast } from "sonner";
+import { useGetMe } from "@/lib/api-client";
 
 export default function Settings() {
+  const { data: user } = useGetMe();
+  const [profile, setProfile] = useState({
+    pharmacyName: "",
+    email: "",
+    address: "",
+    contactNumber: "",
+  });
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    setProfile({
+      pharmacyName: user.pharmacyName ?? "",
+      email: user.email ?? "",
+      address: user.address ?? "",
+      contactNumber: user.contactNumber ?? "",
+    });
+  }, [user]);
+
   const handleSave = () => {
     toast.success("Settings saved successfully");
   };
@@ -30,15 +53,39 @@ export default function Settings() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Pharmacy Name</Label>
-                <Input id="name" defaultValue="Medifind Central" className="bg-background/50" />
+                <Input
+                  id="name"
+                  value={profile.pharmacyName}
+                  onChange={(event) => setProfile((current) => ({ ...current, pharmacyName: event.target.value }))}
+                  className="bg-background/50"
+                />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Contact Email</Label>
-                <Input id="email" defaultValue="contact@medifind.com" className="bg-background/50" />
+                <Input
+                  id="email"
+                  value={profile.email}
+                  onChange={(event) => setProfile((current) => ({ ...current, email: event.target.value }))}
+                  className="bg-background/50"
+                />
               </div>
-              <div className="space-y-2 col-span-2">
+              <div className="space-y-2">
+                <Label htmlFor="contactNumber">Contact Number</Label>
+                <Input
+                  id="contactNumber"
+                  value={profile.contactNumber}
+                  onChange={(event) => setProfile((current) => ({ ...current, contactNumber: event.target.value }))}
+                  className="bg-background/50"
+                />
+              </div>
+              <div className="space-y-2">
                 <Label htmlFor="address">Address</Label>
-                <Input id="address" defaultValue="123 Health Ave, Medical District" className="bg-background/50" />
+                <Input
+                  id="address"
+                  value={profile.address}
+                  onChange={(event) => setProfile((current) => ({ ...current, address: event.target.value }))}
+                  className="bg-background/50"
+                />
               </div>
             </div>
           </CardContent>
