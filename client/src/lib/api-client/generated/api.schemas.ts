@@ -32,6 +32,7 @@ export interface AuthUser {
   pharmacyName?: string | null;
   address?: string | null;
   contactNumber?: string | null;
+  approvalStatus?: string;
 }
 
 export type MedicineStatus =

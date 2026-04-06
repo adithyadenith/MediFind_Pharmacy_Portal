@@ -202,6 +202,10 @@ router.post("/register/verify-otp", async (req, res) => {
         contactNumber: otpRecord.contactNumber,
         passwordHash: otpRecord.pendingPasswordHash,
         emailVerified: true,
+        approvalStatus: "pending",
+        approvedAt: null,
+        approvedBy: null,
+        rejectionReason: null,
         updatedAt: new Date(),
       })
       .where(eq(usersTable.id, existing[0].id))
@@ -217,6 +221,7 @@ router.post("/register/verify-otp", async (req, res) => {
         contactNumber: otpRecord.contactNumber,
         passwordHash: otpRecord.pendingPasswordHash,
         emailVerified: true,
+        approvalStatus: "pending",
       })
       .returning();
     user = created;
@@ -226,8 +231,12 @@ router.post("/register/verify-otp", async (req, res) => {
     and(eq(otpCodesTable.email, normalizedEmail), eq(otpCodesTable.purpose, "register"))
   );
 
-  setAuthenticatedSession(req, user);
-  return res.json({ id: user.id, email: user.email });
+  return res.json({
+    id: user.id,
+    email: user.email,
+    approvalStatus: user.approvalStatus,
+    message: "Email verified. Your pharmacy is pending admin approval before you can sign in.",
+  });
 });
 
 router.post("/login", async (req, res) => {
@@ -242,6 +251,16 @@ router.post("/login", async (req, res) => {
 
   if (!user || !user.emailVerified || !user.passwordHash) {
     return res.status(404).json({ error: "This is not a registered pharmacy" });
+  }
+
+  if (user.approvalStatus === "pending") {
+    return res.status(403).json({ error: "Your pharmacy registration is awaiting admin approval" });
+  }
+
+  if (user.approvalStatus === "rejected") {
+    return res.status(403).json({
+      error: user.rejectionReason || "Your pharmacy registration was rejected by an administrator",
+    });
   }
 
   const passwordMatches = await verifyPassword(password, user.passwordHash);
@@ -341,6 +360,7 @@ router.get("/me", async (req, res) => {
     pharmacyName: user.pharmacyName,
     address: user.address,
     contactNumber: user.contactNumber,
+    approvalStatus: user.approvalStatus,
   });
 });
 

@@ -2,6 +2,9 @@ import { pgTable, serial, text, timestamp, boolean } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
+export const pharmacyApprovalStatuses = ["pending", "approved", "rejected"] as const;
+export type PharmacyApprovalStatus = (typeof pharmacyApprovalStatuses)[number];
+
 export const usersTable = pgTable("users", {
   id: serial("id").primaryKey(),
   email: text("email").notNull().unique(),
@@ -10,6 +13,10 @@ export const usersTable = pgTable("users", {
   contactNumber: text("contact_number"),
   passwordHash: text("password_hash"),
   emailVerified: boolean("email_verified").notNull().default(false),
+  approvalStatus: text("approval_status").notNull().default("pending"),
+  approvedAt: timestamp("approved_at"),
+  approvedBy: text("approved_by"),
+  rejectionReason: text("rejection_reason"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

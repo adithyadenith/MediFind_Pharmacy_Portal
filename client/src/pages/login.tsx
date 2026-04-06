@@ -165,9 +165,13 @@ export default function Login() {
   async function onSignUpOtpSubmit(values: OtpValues) {
     setSubmitting(true);
     try {
-      await apiRequest("/api/auth/register/verify-otp", values);
-      toast.success("Email verified and pharmacy registered");
-      setLocation("/dashboard");
+      const response = await apiRequest<{ message?: string }>("/api/auth/register/verify-otp", values);
+      toast.success(response.message || "Email verified. Your registration is pending admin approval.");
+      signInForm.setValue("email", values.email);
+      signInForm.setValue("password", "");
+      signUpOtpForm.reset({ email: values.email, otp: "" });
+      setMode("signin");
+      setTab("signin");
     } catch (error: any) {
       toast.error(error.message || "Invalid OTP");
     } finally {

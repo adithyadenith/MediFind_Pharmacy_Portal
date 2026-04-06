@@ -16,4 +16,14 @@ export const pool = new Pool({
 });
 export const db = drizzle(pool, { schema });
 
+export async function ensureDatabaseSchema() {
+  await pool.query(`
+    ALTER TABLE users
+    ADD COLUMN IF NOT EXISTS approval_status text NOT NULL DEFAULT 'pending',
+    ADD COLUMN IF NOT EXISTS approved_at timestamp,
+    ADD COLUMN IF NOT EXISTS approved_by text,
+    ADD COLUMN IF NOT EXISTS rejection_reason text
+  `);
+}
+
 export * from "./schema";
