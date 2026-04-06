@@ -171,13 +171,17 @@ export default function Login() {
   async function onSignUpOtpSubmit(values: OtpValues) {
     setSubmitting(true);
     try {
-      const response = await apiRequest<{ message?: string }>("/api/auth/register/verify-otp", values);
-      toast.success(response.message || "Email verified. Your registration is pending admin approval.");
-      signInForm.setValue("email", values.email);
-      signInForm.setValue("password", "");
-      signUpOtpForm.reset({ email: values.email, otp: "" });
-      setMode("signin");
-      setTab("signin");
+      const response = await apiRequest<{ message?: string, autoLogin?: boolean }>("/api/auth/register/verify-otp", values);
+      toast.success(response.message || "Email verified.");
+      if (response.autoLogin) {
+        setLocation("/dashboard");
+      } else {
+        signInForm.setValue("email", values.email);
+        signInForm.setValue("password", "");
+        signUpOtpForm.reset({ email: values.email, otp: "" });
+        setMode("signin");
+        setTab("signin");
+      }
     } catch (error: any) {
       toast.error(error.message || "Invalid OTP");
     } finally {

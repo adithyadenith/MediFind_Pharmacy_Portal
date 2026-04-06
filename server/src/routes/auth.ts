@@ -213,10 +213,10 @@ router.post("/register/verify-otp", async (req, res) => {
         databaseUrl: otpRecord.databaseUrl,
         passwordHash: otpRecord.pendingPasswordHash,
         emailVerified: true,
-        status: "pending",
-        approvalStatus: "pending",
-        approvedAt: null,
-        approvedBy: null,
+        status: process.env.NODE_ENV !== "production" ? "approved" : "pending",
+        approvalStatus: process.env.NODE_ENV !== "production" ? "approved" : "pending",
+        approvedAt: process.env.NODE_ENV !== "production" ? new Date() : null,
+        approvedBy: process.env.NODE_ENV !== "production" ? "auto-dev" : null,
         rejectionReason: null,
         updatedAt: new Date(),
       })
@@ -234,8 +234,8 @@ router.post("/register/verify-otp", async (req, res) => {
         databaseUrl: otpRecord.databaseUrl,
         passwordHash: otpRecord.pendingPasswordHash,
         emailVerified: true,
-        status: "pending",
-        approvalStatus: "pending",
+        status: process.env.NODE_ENV !== "production" ? "approved" : "pending",
+        approvalStatus: process.env.NODE_ENV !== "production" ? "approved" : "pending",
       })
       .returning();
     user = created;
@@ -244,6 +244,18 @@ router.post("/register/verify-otp", async (req, res) => {
   await db.delete(otpCodesTable).where(
     and(eq(otpCodesTable.email, normalizedEmail), eq(otpCodesTable.purpose, "register"))
   );
+
+    if (process.env.NODE_ENV !== "production") {
+    setAuthenticatedSession(req, user);
+    return res.json({
+      id: user.id,
+      email: user.email,
+      status: user.status,
+      approvalStatus: user.approvalStatus,
+      message: "Email verified. Testing mode: account approved and automatically logged in.",
+      autoLogin: true,
+    });
+  }
 
   return res.json({
     id: user.id,
