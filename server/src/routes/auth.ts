@@ -10,6 +10,9 @@ const scrypt = promisify(scryptCallback);
 const resendApiKey = process.env.RESEND_API_KEY;
 const resendFromEmail = process.env.RESEND_FROM_EMAIL;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
+const isDevApprovalBypassEnabled =
+  process.env.NODE_ENV !== "production" &&
+  process.env.ALLOW_PENDING_APPROVAL_LOGIN !== "false";
 
 type OtpPurpose = "register" | "reset";
 
@@ -280,7 +283,36 @@ router.post("/login", async (req, res) => {
     return res.status(404).json({ error: "This is not a registered pharmacy" });
   }
 
+  const passwordMatches = await verifyPassword(password, user.passwordHash);
+  if (!passwordMatches) {
+    return res.status(400).json({ error: "Incorrect password" });
+  }
+
   if (user.status === "pending" || user.approvalStatus === "pending") {
+    if (isDevApprovalBypassEnabled) {
+      const [approvedUser] = await db
+        .update(usersTable)
+        .set({
+          status: "approved",
+          approvalStatus: "approved",
+          approvedAt: user.approvedAt ?? new Date(),
+          approvedBy: user.approvedBy ?? "auto-dev-login",
+          rejectionReason: null,
+          updatedAt: new Date(),
+        })
+        .where(eq(usersTable.id, user.id))
+        .returning();
+
+      setAuthenticatedSession(req, approvedUser);
+      return res.json({
+        id: approvedUser.id,
+        email: approvedUser.email,
+        status: approvedUser.status,
+        approvalStatus: approvedUser.approvalStatus,
+        message: "Development mode bypass: pending approval was auto-approved for local testing.",
+      });
+    }
+
     return res.status(403).json({ error: "Your pharmacy registration is awaiting admin approval" });
   }
 
@@ -288,11 +320,6 @@ router.post("/login", async (req, res) => {
     return res.status(403).json({
       error: user.rejectionReason || "Your pharmacy registration was rejected by an administrator",
     });
-  }
-
-  const passwordMatches = await verifyPassword(password, user.passwordHash);
-  if (!passwordMatches) {
-    return res.status(400).json({ error: "Incorrect password" });
   }
 
   setAuthenticatedSession(req, user);
