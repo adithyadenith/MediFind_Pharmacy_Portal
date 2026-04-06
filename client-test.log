@@ -1,0 +1,20 @@
+
+> workspace@0.0.0 dev:client C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha
+> pnpm --filter ./client run dev
+
+
+> medifind-client@0.0.0 dev C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\client
+> vite --config vite.config.ts --host 0.0.0.0
+
+
+  [32m[1mVITE[22m v7.3.1[39m  [2mready in [0m[1m1291[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.31.192.1:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://192.168.56.1:[1m5173[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.20.10.14:[1m5173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+^CC:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\client:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  medifind-client@0.0.0 dev: `vite --config vite.config.ts --host 0.0.0.0`
+Exit status 3221225786
+ ELIFECYCLE  Command failed with exit code 3221225786.

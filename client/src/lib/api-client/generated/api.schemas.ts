@@ -32,6 +32,8 @@ export interface AuthUser {
   pharmacyName?: string | null;
   address?: string | null;
   contactNumber?: string | null;
+  databaseUrl?: string | null;
+  status?: string;
   approvalStatus?: string;
 }
 

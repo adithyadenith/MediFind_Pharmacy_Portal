@@ -1,0 +1,194 @@
+
+> workspace@0.0.0 dev:server C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha
+> pnpm --filter ./server run dev
+
+
+> medifind-server@0.0.0 dev C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server
+> cross-env NODE_ENV=development pnpm run build && pnpm run start
+
+
+> medifind-server@0.0.0 build C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server
+> node ./build.mjs
+
+
+  dist\index.mjs                   2.6mb
+  dist\pino-worker.mjs           153.2kb
+  dist\pino-file.mjs             141.9kb
+  dist\pino-pretty.mjs           114.3kb
+  dist\thread-stream-worker.mjs    7.3kb
+  ...and 5 more output files...
+
+Done in 1408ms
+
+> medifind-server@0.0.0 start C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server
+> node --enable-source-maps --env-file=../.env ./dist/index.mjs
+
+[20:23:06.014] [32mINFO[39m (24164): [36mServer listening[39m
+    [35mport[39m: 3001
+[20:23:09.371] [32mINFO[39m (24164): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 1,
+      "method": "GET",
+      "url": "/api/healthz"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 15
+[20:23:11.932] [31mERROR[39m (24164): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 2,
+      "method": "POST",
+      "url": "/api/auth/login"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"email\", \"pharmacy_name\", \"address\", \"contact_number\", \"password_hash\", \"email_verified\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2\nparams: adithyadenith@gmail.com,1: getaddrinfo ENOTFOUND db.zdgugonfvsadghkijfnh.supabase.co",
+      "stack":
+          Error: Failed query: select "id", "email", "pharmacy_name", "address", "contact_number", "password_hash", "email_verified", "created_at", "updated_at" from "users" where "users"."email" = $1 limit $2
+          params: adithyadenith@gmail.com,1
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\auth.ts:214:20)
+          caused by: Error: getaddrinfo ENOTFOUND db.zdgugonfvsadghkijfnh.supabase.co
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\auth.ts:214:20)
+      "query": "select \"id\", \"email\", \"pharmacy_name\", \"address\", \"contact_number\", \"password_hash\", \"email_verified\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2",
+      "params": [
+        "adithyadenith@gmail.com",
+        1
+      ]
+    }
+[20:23:12.049] [32mINFO[39m (24164): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 2,
+      "method": "POST",
+      "url": "/api/auth/login"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 378
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[20:40:42.327] [31mERROR[39m (24164): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 3,
+      "method": "POST",
+      "url": "/api/auth/register/send-otp"
+    }
+    err: {
+      "type": "SyntaxError",
+      "message": "Expected property name or '}' in JSON at position 1 (line 1 column 2)",
+      "stack":
+          SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+              at JSON.parse (<anonymous>)
+              at parse (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\body-parser@2.2.2\node_modules\body-parser\lib\types\json.js:72:19)
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\body-parser@2.2.2\node_modules\body-parser\lib\read.js:162:18)
+              at AsyncResource.runInAsyncScope (node:async_hooks:228:14)
+              at invokeCallback (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\raw-body@3.0.2\node_modules\raw-body\index.js:238:16)
+              at done (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\raw-body@3.0.2\node_modules\raw-body\index.js:227:7)
+              at IncomingMessage.onEnd (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\raw-body@3.0.2\node_modules\raw-body\index.js:287:7)
+              at IncomingMessage.emit (node:events:508:28)
+              at endReadableNT (node:internal/streams/readable:1729:12)
+              at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+      "expose": true,
+      "statusCode": 400,
+      "status": 400,
+      "body": "{\\"
+    }
+[20:40:42.328] [32mINFO[39m (24164): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 3,
+      "method": "POST",
+      "url": "/api/auth/register/send-otp"
+    }
+    [35mres[39m: {
+      "statusCode": 400
+    }
+    [35mresponseTime[39m: 4
+[20:40:45.157] [32mINFO[39m (24164): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 4,
+      "method": "GET",
+      "url": "/api/healthz"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 2
+[20:42:04.000] [31mERROR[39m (24164): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 5,
+      "method": "POST",
+      "url": "/api/auth/register/send-otp"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"email\", \"pharmacy_name\", \"address\", \"contact_number\", \"password_hash\", \"email_verified\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2\nparams: adithyadenith@gmail.com,1: getaddrinfo ENOTFOUND db.zdgugonfvsadghkijfnh.supabase.co",
+      "stack":
+          Error: Failed query: select "id", "email", "pharmacy_name", "address", "contact_number", "password_hash", "email_verified", "created_at", "updated_at" from "users" where "users"."email" = $1 limit $2
+          params: adithyadenith@gmail.com,1
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\auth.ts:119:20)
+          caused by: Error: getaddrinfo ENOTFOUND db.zdgugonfvsadghkijfnh.supabase.co
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\auth.ts:119:20)
+      "query": "select \"id\", \"email\", \"pharmacy_name\", \"address\", \"contact_number\", \"password_hash\", \"email_verified\", \"created_at\", \"updated_at\" from \"users\" where \"users\".\"email\" = $1 limit $2",
+      "params": [
+        "adithyadenith@gmail.com",
+        1
+      ]
+    }
+[20:42:04.000] [32mINFO[39m (24164): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 5,
+      "method": "POST",
+      "url": "/api/auth/register/send-otp"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 194
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+ ELIFECYCLE  Command failed with exit code 4294967295.
+C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  medifind-server@0.0.0 dev: `cross-env NODE_ENV=development pnpm run build && pnpm run start`
+Exit status 4294967295
+ ELIFECYCLE  Command failed with exit code 4294967295.

@@ -8,6 +8,13 @@
       "when": 1775376844905,
       "tag": "0000_sudden_silhouette",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1775445000000,
+      "tag": "0001_pharmacy_status_and_database_url",
+      "breakpoints": true
     }
   ]
 }

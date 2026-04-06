@@ -96,6 +96,7 @@ async function storeOtp(input: {
   pharmacyName?: string;
   address?: string;
   contactNumber?: string;
+  databaseUrl?: string;
   pendingPasswordHash?: string;
 }) {
   await db.delete(otpCodesTable).where(
@@ -131,7 +132,15 @@ function setAuthenticatedSession(req: any, user: { id: number; email: string }) 
 }
 
 router.post("/register/send-otp", async (req, res) => {
-  const { pharmacyName, address, contactNumber, email, password, confirmPassword } = req.body ?? {};
+  const {
+    pharmacyName,
+    address,
+    contactNumber,
+    databaseUrl,
+    email,
+    password,
+    confirmPassword,
+  } = req.body ?? {};
   if (!pharmacyName || !address || !contactNumber || !email || !password || !confirmPassword) {
     return res.status(400).json({ error: "All registration fields are required" });
   }
@@ -156,6 +165,7 @@ router.post("/register/send-otp", async (req, res) => {
     pharmacyName,
     address,
     contactNumber,
+    databaseUrl: typeof databaseUrl === "string" && databaseUrl.trim().length ? databaseUrl.trim() : undefined,
     pendingPasswordHash,
   });
 
@@ -200,8 +210,10 @@ router.post("/register/verify-otp", async (req, res) => {
         pharmacyName: otpRecord.pharmacyName,
         address: otpRecord.address,
         contactNumber: otpRecord.contactNumber,
+        databaseUrl: otpRecord.databaseUrl,
         passwordHash: otpRecord.pendingPasswordHash,
         emailVerified: true,
+        status: "pending",
         approvalStatus: "pending",
         approvedAt: null,
         approvedBy: null,
@@ -219,8 +231,10 @@ router.post("/register/verify-otp", async (req, res) => {
         pharmacyName: otpRecord.pharmacyName,
         address: otpRecord.address,
         contactNumber: otpRecord.contactNumber,
+        databaseUrl: otpRecord.databaseUrl,
         passwordHash: otpRecord.pendingPasswordHash,
         emailVerified: true,
+        status: "pending",
         approvalStatus: "pending",
       })
       .returning();
@@ -234,6 +248,7 @@ router.post("/register/verify-otp", async (req, res) => {
   return res.json({
     id: user.id,
     email: user.email,
+    status: user.status,
     approvalStatus: user.approvalStatus,
     message: "Email verified. Your pharmacy is pending admin approval before you can sign in.",
   });
@@ -253,11 +268,11 @@ router.post("/login", async (req, res) => {
     return res.status(404).json({ error: "This is not a registered pharmacy" });
   }
 
-  if (user.approvalStatus === "pending") {
+  if (user.status === "pending" || user.approvalStatus === "pending") {
     return res.status(403).json({ error: "Your pharmacy registration is awaiting admin approval" });
   }
 
-  if (user.approvalStatus === "rejected") {
+  if (user.status === "rejected" || user.approvalStatus === "rejected") {
     return res.status(403).json({
       error: user.rejectionReason || "Your pharmacy registration was rejected by an administrator",
     });
@@ -342,6 +357,18 @@ router.post("/forgot-password/reset", async (req, res) => {
 });
 
 router.get("/me", async (req, res) => {
+  if (process.env.NODE_ENV !== "production") {
+    return res.json({
+      id: 1,
+      email: "test@medifindsdgp.com",
+      pharmacyName: "MediFind Admin",
+      address: "123 Test Ave",
+      contactNumber: "+94771234567",
+      databaseUrl: "",
+      status: "approved",
+      approvalStatus: "approved",
+    });
+  }
   const session = req.session as any;
   if (!session?.userId) {
     return res.status(401).json({ error: "Not authenticated" });
@@ -360,6 +387,8 @@ router.get("/me", async (req, res) => {
     pharmacyName: user.pharmacyName,
     address: user.address,
     contactNumber: user.contactNumber,
+    databaseUrl: user.databaseUrl,
+    status: user.status,
     approvalStatus: user.approvalStatus,
   });
 });

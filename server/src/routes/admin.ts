@@ -36,7 +36,9 @@ router.get("/pharmacies", async (req, res) => {
       pharmacyName: usersTable.pharmacyName,
       address: usersTable.address,
       contactNumber: usersTable.contactNumber,
+      databaseUrl: usersTable.databaseUrl,
       emailVerified: usersTable.emailVerified,
+      status: usersTable.status,
       approvalStatus: usersTable.approvalStatus,
       approvedAt: usersTable.approvedAt,
       approvedBy: usersTable.approvedBy,
@@ -66,6 +68,7 @@ router.post("/pharmacies/:id/approve", async (req, res) => {
   const [updated] = await db
     .update(usersTable)
     .set({
+      status: "approved",
       approvalStatus: "approved",
       approvedAt: new Date(),
       approvedBy,
@@ -76,6 +79,7 @@ router.post("/pharmacies/:id/approve", async (req, res) => {
     .returning({
       id: usersTable.id,
       email: usersTable.email,
+      status: usersTable.status,
       approvalStatus: usersTable.approvalStatus,
       approvedAt: usersTable.approvedAt,
       approvedBy: usersTable.approvedBy,
@@ -107,6 +111,7 @@ router.post("/pharmacies/:id/reject", async (req, res) => {
   const [updated] = await db
     .update(usersTable)
     .set({
+      status: "rejected",
       approvalStatus: "rejected",
       approvedAt: null,
       approvedBy,
@@ -117,6 +122,7 @@ router.post("/pharmacies/:id/reject", async (req, res) => {
     .returning({
       id: usersTable.id,
       email: usersTable.email,
+      status: usersTable.status,
       approvalStatus: usersTable.approvalStatus,
       approvedBy: usersTable.approvedBy,
       rejectionReason: usersTable.rejectionReason,

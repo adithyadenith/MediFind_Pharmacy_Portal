@@ -1,0 +1,1614 @@
+
+> workspace@0.0.0 dev:server C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha
+> pnpm --filter ./server run dev
+
+
+> medifind-server@0.0.0 dev C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server
+> cross-env NODE_ENV=development pnpm run build && pnpm run start
+
+
+> medifind-server@0.0.0 build C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server
+> node ./build.mjs
+
+
+  dist\index.mjs                   2.6mb
+  dist\pino-worker.mjs           153.2kb
+  dist\pino-file.mjs             141.9kb
+  dist\pino-pretty.mjs           114.3kb
+  dist\thread-stream-worker.mjs    7.3kb
+  ...and 5 more output files...
+
+Done in 639ms
+
+> medifind-server@0.0.0 start C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server
+> node --enable-source-maps --env-file=../.env ./dist/index.mjs
+
+[21:44:51.765] [32mINFO[39m (22984): [36mServer listening[39m
+    [35mport[39m: 3001
+[21:46:16.872] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 1,
+      "method": "POST",
+      "url": "/api/auth/forgot-password/send-otp"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 3730
+[21:47:08.592] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 2,
+      "method": "POST",
+      "url": "/api/auth/forgot-password/reset"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 2129
+[21:48:02.859] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 3,
+      "method": "POST",
+      "url": "/api/auth/login"
+    }
+    [35mres[39m: {
+      "statusCode": 400
+    }
+    [35mresponseTime[39m: 1583
+[21:48:11.700] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 4,
+      "method": "POST",
+      "url": "/api/auth/login"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 271
+[21:48:12.056] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 5,
+      "method": "GET",
+      "url": "/api/auth/me"
+    }
+    [35mres[39m: {
+      "statusCode": 304
+    }
+    [35mresponseTime[39m: 10
+[21:48:12.904] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 6,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"",
+      "params": []
+    }
+[21:48:13.220] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 6,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 920
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:13.948] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 7,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1\nparams: 5: column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at" limit $1
+          params: 5
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1",
+      "params": [
+        5
+      ]
+    }
+[21:48:13.957] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 9,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:48:13.963] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 7,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1522
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at processTicksAndRejections (node:internal/process/task_queues:89:21)
+              at runNextTicks (node:internal/process/task_queues:69:3)
+              at process.processImmediate (node:internal/timers:472:9)
+    }
+[21:48:13.967] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 9,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1515
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:13.972] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 8,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"\nparams: 10: column \"quantity\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "name", "category", "quantity", "price", "expiry_date", "created_at" from "medicines" where "medicines"."quantity" < $1 order by "medicines"."quantity"
+          params: 10
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+          caused by: error: column "quantity" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+      "query": "select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"",
+      "params": [
+        10
+      ]
+    }
+[21:48:13.975] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 8,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1527
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:15.915] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 10,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"",
+      "params": []
+    }
+[21:48:15.929] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 10,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1689
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:16.501] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 13,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"\nparams: 10: column \"quantity\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "name", "category", "quantity", "price", "expiry_date", "created_at" from "medicines" where "medicines"."quantity" < $1 order by "medicines"."quantity"
+          params: 10
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+          caused by: error: column "quantity" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+      "query": "select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"",
+      "params": [
+        10
+      ]
+    }
+[21:48:16.506] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 13,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1193
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:16.511] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 11,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1\nparams: 5: column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at" limit $1
+          params: 5
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1",
+      "params": [
+        5
+      ]
+    }
+[21:48:16.517] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 11,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1228
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:16.563] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 12,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:48:16.567] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 12,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1260
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:19.698] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 15,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"\nparams: 10: column \"quantity\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "name", "category", "quantity", "price", "expiry_date", "created_at" from "medicines" where "medicines"."quantity" < $1 order by "medicines"."quantity"
+          params: 10
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+          caused by: error: column "quantity" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+      "query": "select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"",
+      "params": [
+        10
+      ]
+    }
+[21:48:19.702] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 15,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1174
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:19.930] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 14,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"",
+      "params": []
+    }
+[21:48:19.938] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 14,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1664
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:20.020] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 16,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1\nparams: 5: column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at" limit $1
+          params: 5
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1",
+      "params": [
+        5
+      ]
+    }
+[21:48:20.024] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 16,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1182
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:20.079] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 17,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:48:20.084] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 17,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1180
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:20.797] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 18,
+      "method": "POST",
+      "url": "/api/auth/logout"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 4
+[21:48:39.509] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 19,
+      "method": "POST",
+      "url": "/api/auth/register/send-otp"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 3787
+[21:48:54.433] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 20,
+      "method": "POST",
+      "url": "/api/auth/register/verify-otp"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 2186
+[21:48:54.823] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 25,
+      "method": "GET",
+      "url": "/api/auth/me"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 12
+[21:48:55.267] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 21,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"",
+      "params": []
+    }
+[21:48:55.273] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 21,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 799
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:56.345] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 24,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:48:56.349] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 24,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1538
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:56.482] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 22,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1\nparams: 5: column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at" limit $1
+          params: 5
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1",
+      "params": [
+        5
+      ]
+    }
+[21:48:56.484] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 23,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"\nparams: 10: column \"quantity\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "name", "category", "quantity", "price", "expiry_date", "created_at" from "medicines" where "medicines"."quantity" < $1 order by "medicines"."quantity"
+          params: 10
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+          caused by: error: column "quantity" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+      "query": "select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"",
+      "params": [
+        10
+      ]
+    }
+[21:48:56.489] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 22,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1683
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:56.493] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 23,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1683
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at processTicksAndRejections (node:internal/process/task_queues:89:21)
+              at runNextTicks (node:internal/process/task_queues:69:3)
+              at process.processImmediate (node:internal/timers:472:9)
+    }
+[21:48:58.655] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 26,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"",
+      "params": []
+    }
+[21:48:58.666] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 26,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 2061
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:59.161] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 27,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:48:59.166] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 27,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1480
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:59.247] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 28,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1\nparams: 5: column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at" limit $1
+          params: 5
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1",
+      "params": [
+        5
+      ]
+    }
+[21:48:59.251] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 28,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1421
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:48:59.269] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 29,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"\nparams: 10: column \"quantity\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "name", "category", "quantity", "price", "expiry_date", "created_at" from "medicines" where "medicines"."quantity" < $1 order by "medicines"."quantity"
+          params: 10
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+          caused by: error: column "quantity" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+      "query": "select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"",
+      "params": [
+        10
+      ]
+    }
+[21:48:59.273] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 29,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1439
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:02.389] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 31,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:49:02.394] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 31,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1148
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:02.594] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 30,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"",
+      "params": []
+    }
+[21:49:02.598] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 30,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1592
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:02.646] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 32,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1\nparams: 5: column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at" limit $1
+          params: 5
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1",
+      "params": [
+        5
+      ]
+    }
+[21:49:02.650] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 32,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1148
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:02.744] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 33,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"\nparams: 10: column \"quantity\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "name", "category", "quantity", "price", "expiry_date", "created_at" from "medicines" where "medicines"."quantity" < $1 order by "medicines"."quantity"
+          params: 10
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+          caused by: error: column "quantity" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+      "query": "select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"",
+      "params": [
+        10
+      ]
+    }
+[21:49:02.748] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 33,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1163
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:07.723] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 34,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:49:07.727] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 34,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1307
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:08.523] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 36,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1\nparams: 5: column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at" limit $1
+          params: 5
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:31:18)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\" limit $1",
+      "params": [
+        5
+      ]
+    }
+[21:49:08.526] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 36,
+      "method": "GET",
+      "url": "/api/dashboard/recent-orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1538
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:08.699] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 37,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"\nparams: 10: column \"quantity\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "name", "category", "quantity", "price", "expiry_date", "created_at" from "medicines" where "medicines"."quantity" < $1 order by "medicines"."quantity"
+          params: 10
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+          caused by: error: column "quantity" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:76:21)
+      "query": "select \"id\", \"name\", \"category\", \"quantity\", \"price\", \"expiry_date\", \"created_at\" from \"medicines\" where \"medicines\".\"quantity\" < $1 order by \"medicines\".\"quantity\"",
+      "params": [
+        10
+      ]
+    }
+[21:49:08.705] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 37,
+      "method": "GET",
+      "url": "/api/dashboard/low-stock"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1628
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:09.078] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 35,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\dashboard.ts:11:20)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\"",
+      "params": []
+    }
+[21:49:09.082] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 35,
+      "method": "GET",
+      "url": "/api/dashboard/stats"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 2142
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:13.479] [31mERROR[39m (22984): [36mUnhandled API error[39m
+    [35mreq[39m: {
+      "id": 38,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    err: {
+      "type": "_DrizzleQueryError",
+      "message": "Failed query: select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"\nparams: : column \"patient_name\" does not exist",
+      "stack":
+          Error: Failed query: select "id", "patient_name", "patient_email", "status", "total_price", "created_at", "updated_at" from "orders" order by "orders"."created_at"
+          params: 
+              at NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:73:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+          caused by: error: column "patient_name" does not exist
+              at <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:161:13)
+              at async NodePgPreparedQuery.queryWithCache (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\pg-core\session.ts:71:12)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\drizzle-orm@0.45.2_@types+pg@8.20.0_pg@8.20.0\node_modules\src\node-postgres\session.ts:154:19)
+              at async <anonymous> (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server\src\routes\orders.ts:61:7)
+      "query": "select \"id\", \"patient_name\", \"patient_email\", \"status\", \"total_price\", \"created_at\", \"updated_at\" from \"orders\" order by \"orders\".\"created_at\"",
+      "params": []
+    }
+[21:49:13.483] [32mINFO[39m (22984): [36mrequest errored[39m
+    [35mreq[39m: {
+      "id": 38,
+      "method": "GET",
+      "url": "/api/orders"
+    }
+    [35mres[39m: {
+      "statusCode": 500
+    }
+    [35mresponseTime[39m: 1428
+    err: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack":
+          Error: failed with status code 500
+              at onResFinished (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:115:39)
+              at ServerResponse.onResponseComplete (C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\node_modules\.pnpm\pino-http@10.5.0\node_modules\pino-http\logger.js:178:14)
+              at ServerResponse.emit (node:events:520:35)
+              at onFinish (node:_http_outgoing:1026:10)
+              at callback (node:internal/streams/writable:764:21)
+              at afterWrite (node:internal/streams/writable:708:5)
+              at afterWriteTick (node:internal/streams/writable:694:10)
+              at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+    }
+[21:49:13.712] [32mINFO[39m (22984): [36mrequest completed[39m
+    [35mreq[39m: {
+      "id": 39,
+      "method": "POST",
+      "url": "/api/auth/logout"
+    }
+    [35mres[39m: {
+      "statusCode": 200
+    }
+    [35mresponseTime[39m: 1
+^C ELIFECYCLE  Command failed with exit code 3221225786.
+C:\Users\user\Downloads\MediFind-Pha\MediFind-Pha\server:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  medifind-server@0.0.0 dev: `cross-env NODE_ENV=development pnpm run build && pnpm run start`
+Exit status 3221225786
+ ELIFECYCLE  Command failed with exit code 3221225786.

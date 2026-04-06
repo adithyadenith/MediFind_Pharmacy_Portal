@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Activity, Building2, KeyRound, Lock, Mail, MapPin, Phone } from "lucide-react";
+import { Activity, Building2, Database, KeyRound, Lock, Mail, MapPin, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { resolveApiUrl } from "@/lib/api-client";
 
@@ -32,6 +32,10 @@ const signUpSchema = z.object({
     .string()
     .min(7, { message: "Enter a valid contact number." })
     .regex(/^[0-9+\-\s()]+$/, { message: "Only digits, spaces, +, -, and () are allowed." }),
+  databaseUrl: z.union([
+    z.literal(""),
+    z.string().url({ message: "Enter a valid database URL." }),
+  ]),
   pharmacyEmail: z.string().email({ message: "Please enter a valid email address." }),
   password: z.string().min(8, { message: "Password must be at least 8 characters." }),
   confirmPassword: z.string().min(8, { message: "Confirm password is required." }),
@@ -103,6 +107,7 @@ export default function Login() {
       pharmacyName: "",
       address: "",
       contactNumber: "",
+      databaseUrl: "",
       pharmacyEmail: "",
       password: "",
       confirmPassword: "",
@@ -146,6 +151,7 @@ export default function Login() {
         pharmacyName: values.pharmacyName,
         address: values.address,
         contactNumber: values.contactNumber,
+        databaseUrl: values.databaseUrl || undefined,
         email: values.pharmacyEmail,
         password: values.password,
         confirmPassword: values.confirmPassword,
@@ -318,6 +324,28 @@ export default function Login() {
               <FormControl>
                 <Input placeholder="auth@medifindsdgp.com" className={inputClass} {...field} />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={signUpForm.control}
+          name="databaseUrl"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-foreground/80 flex items-center gap-1.5">
+                <Database className="h-3.5 w-3.5 text-primary" /> Database URL
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="postgresql://user:password@host:5432/database"
+                  className={inputClass}
+                  {...field}
+                />
+              </FormControl>
+              <p className="text-[11px] text-muted-foreground">
+                Optional for now. It will be saved with the pharmacy registration when provided.
+              </p>
               <FormMessage />
             </FormItem>
           )}
